@@ -77,6 +77,17 @@ GitHub 原技能地址：
 - 仓库首页：[forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills)
 - 技能目录：[skills/karpathy-guidelines](https://github.com/forrestchang/andrej-karpathy-skills/tree/main/skills/karpathy-guidelines)
 
+### 3. `playwright`
+
+适用场景：
+
+- 当子代理需要做真实浏览器验证、浏览器验收、页面交互复现、截图取证或终端驱动的页面调试时使用。
+
+GitHub 原技能地址：
+
+- 仓库首页：[openai/skills](https://github.com/openai/skills)
+- 技能目录：[skills/.curated/playwright](https://github.com/openai/skills/tree/main/skills/.curated/playwright)
+
 ## 使用特点
 
 - 默认使用中文组织主代理约束和子代理交接。
