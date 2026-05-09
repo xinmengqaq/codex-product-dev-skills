@@ -100,6 +100,19 @@ GitHub 原工具地址：
 
 - 仓库首页：[safishamsi/graphify](https://github.com/safishamsi/graphify)
 
+### 5. `superpowers`
+
+适用场景：
+
+- 当任务需要先做产品/实施规划、把大目标拆成可执行计划、或按计划推进实现时使用。
+- 当后端和前端逻辑需要 TDD/测试先行时使用，例如先写失败测试、再实现、再跑回归。
+- 当一个 Task 完成后需要最后的子代理双审时使用，包括规格符合性审查和必要的代码质量审查。
+- 在本技能里，`superpowers` 主要负责规划、TDD 流程和最终审查方法；具体派发边界、模型路由、真源下发和验收口径仍由 `main-agent-subagent-guardrails` 约束。
+
+GitHub 原技能地址：
+
+- 仓库首页：[obra/superpowers](https://github.com/obra/superpowers)
+
 ## 使用特点
 
 - 默认使用中文组织主代理约束和子代理交接。
