@@ -34,7 +34,24 @@
     |
     v
 [main-agent-subagent-guardrails] 按计划执行与验收
+
 ```
+
+安装方式
+这个仓库只提供两个核心技能。你可以分别安装它们。
+
+1. 安装 bdd-before-planning
+适合在工程计划开始前，先做 BDD 行为定向，防止 AI 偏离你的产品方向。
+```text
+python C:\Users\xinme\.codex\skills\.system\skill-installer\scripts\install-skill-from-github.py --url https://github.com/xinmengqaq/gpt5.5-agent-subagent-guardrails/tree/main/skills/bdd-before-planning
+```
+2. 安装 main-agent-subagent-guardrails
+适合让 GPT-5.5 主代理按既定计划执行、调度子代理并进行验收。
+
+```text
+python C:\Users\xinme\.codex\skills\.system\skill-installer\scripts\install-skill-from-github.py --url https://github.com/xinmengqaq/gpt5.5-agent-subagent-guardrails/tree/main/skills/main-agent-subagent-guardrails
+```
+安装完成后，重启 Codex 让新技能生效。
 
 ### 1. 把想法变成设计文档
 
