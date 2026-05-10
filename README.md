@@ -37,22 +37,67 @@
 
 ```
 
-安装方式
-这个仓库只提供两个核心技能。你可以分别安装它们。
+### 1. 安装 `bdd-before-planning`
 
-1. 安装 bdd-before-planning
 适合在工程计划开始前，先做 BDD 行为定向，防止 AI 偏离你的产品方向。
-```text
-python C:\Users\xinme\.codex\skills\.system\skill-installer\scripts\install-skill-from-github.py --url https://github.com/xinmengqaq/gpt5.5-agent-subagent-guardrails/tree/main/skills/bdd-before-planning
+
+#### 方式 A：通过 Git 克隆后复制
+
+```powershell
+git clone https://github.com/xinmengqaq/gpt5.5-agent-subagent-guardrails.git
 ```
-2. 安装 main-agent-subagent-guardrails
+
+把仓库里的 `skills/bdd-before-planning` 目录复制到你的 Codex 技能目录：
+
+```text
+~/.codex/skills/bdd-before-planning
+```
+
+#### 方式 B：通过 GitHub 网页下载后复制
+
+打开这个目录：
+
+```text
+https://github.com/xinmengqaq/gpt5.5-agent-subagent-guardrails/tree/main/skills/bdd-before-planning
+```
+
+点击下载或保存该目录内容，然后把整个 `bdd-before-planning` 文件夹放到：
+
+```text
+~/.codex/skills/bdd-before-planning
+```
+
+### 2. 安装 `main-agent-subagent-guardrails`
+
 适合让 GPT-5.5 主代理按既定计划执行、调度子代理并进行验收。
 
-```text
-python C:\Users\xinme\.codex\skills\.system\skill-installer\scripts\install-skill-from-github.py --url https://github.com/xinmengqaq/gpt5.5-agent-subagent-guardrails/tree/main/skills/main-agent-subagent-guardrails
-```
-安装完成后，重启 Codex 让新技能生效。
+#### 方式 A：通过 Git 克隆后复制
 
+```powershell
+git clone https://github.com/xinmengqaq/gpt5.5-agent-subagent-guardrails.git
+```
+
+把仓库里的 `skills/main-agent-subagent-guardrails` 目录复制到你的 Codex 技能目录：
+
+```text
+~/.codex/skills/main-agent-subagent-guardrails
+```
+
+#### 方式 B：通过 GitHub 网页下载后复制
+
+打开这个目录：
+
+```text
+https://github.com/xinmengqaq/gpt5.5-agent-subagent-guardrails/tree/main/skills/main-agent-subagent-guardrails
+```
+
+点击下载或保存该目录内容，然后把整个 `main-agent-subagent-guardrails` 文件夹放到：
+
+```text
+~/.codex/skills/main-agent-subagent-guardrails
+```
+
+安装完成后，重启 Codex 让新技能生效。
 ### 1. 把想法变成设计文档
 
 先使用 [`superpowers:brainstorming`](C:/Users/xinme/.codex/superpowers/skills/brainstorming/SKILL.md)。
