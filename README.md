@@ -1,12 +1,102 @@
-# main-agent-subagent-guardrails
+# AI 产品开发技能流程
 
-这是一个给你控制“GPT-5.5 主代理怎么派子代理”的技能仓库。
+这是一个帮助你用 AI 做产品、工具、网站、应用或游戏开发的技能仓库。
 
-当前提供的核心技能是：
+它解决的核心问题不是“让 AI 多写代码”，而是让 AI 在开发前先理解你的方向，在开发中不随意扩展功能，在验收时不能用半成品糊弄完成。
+
+这些技能主要面向 Codex 使用；其他 AI 工具可能无法完整适配其中的技能调用、子代理编排和验收流程。
+
+仓库内置了 `bdd-before-planning` 技能。它会在工程计划开始前，根据你的设计文档、UI 原型、当前代码事实和目标，先做一次 BDD 行为定向：锁定每个 Task 真正要达成的用户/玩家行为、验收证据和禁止臆想项。这样 AI 后续写计划和执行时，会围绕你的产品方向推进，而不是把“它觉得合理”的功能自动加入项目。
+
+当前提供的核心技能：
 
 - `main-agent-subagent-guardrails`：只适合作为 GPT-5.5 的主代理技能使用，用于把 GPT-5.5 主代理锁定为“顾问 / 调度 / 验收”角色，并统一 GPT-5.x 子代理的边界、证据、返工和验收规则。
+- `bdd-before-planning`：在 `superpowers:writing-plans` 写工程实施计划前，先根据 UI 原型、设计文档、当前代码事实和用户目标生成 BDD 行为定向，锁住 Task 行为闭环、范围边界、验收证据和禁止臆想项。
+
+## 推荐产品开发流程
+
+推荐按下面顺序使用技能。这个流程适合单人用 AI 推进真实产品或游戏开发。
+
+```text
+[你的想法]
+    |
+    v
+[superpowers:brainstorming]      把想法变成设计文档
+    |
+    v
+[web-design-engineer]            把 UI 原型搭出来
+    |
+    v
+[bdd-before-planning]            在工程计划前锁住行为方向
+    |
+    v
+[superpowers:writing-plans]      写工程实施计划
+    |
+    v
+[main-agent-subagent-guardrails] 按计划执行与验收
+```
+
+### 1. 把想法变成设计文档
+
+先使用 [`superpowers:brainstorming`](C:/Users/xinme/.codex/superpowers/skills/brainstorming/SKILL.md)。
+
+这一阶段用来把一个模糊想法整理成产品或游戏设计文档。重点是确定目标用户、核心体验、功能边界、数据流、错误处理和验收方向。不要一开始就让 AI 写工程计划，否则它容易在需求还没稳定时提前脑补实现细节。
+
+### 2. 把 UI 原型搭出来
+
+再使用 [`web-design-engineer`](C:/Users/xinme/.codex/skills/web-design-engineer/SKILL.md)。
+
+这一阶段把设计文档转成可看的 UI 原型。原型不是装饰品，它是后续 BDD 和工程计划的真源之一。页面结构、关键交互、状态反馈和用户路径都应该尽量在原型里显出来，方便后续约束 AI 不偏离方向。
+
+### 3. 在工程计划前做 BDD 行为定向
+
+然后使用 [`bdd-before-planning`](./bdd-before-planning/SKILL.md)。
+
+这一阶段专门防止 AI 偏离你的方向。它会读取设计文档、UI 原型、当前代码事实和你的明确要求，把每个 Task 前面都加上 BDD 行为定向：
+
+- 这个 Task 要让用户/玩家完成什么行为。
+- 哪些依据来自设计文档、UI 原型或当前代码。
+- 哪些只是保守推断，不能自动升级成必做。
+- 哪些功能属于 AI 臆想，禁止加入第一版。
+- 正常路径、失败路径和边界路径是什么。
+- 需要什么真实验收证据才算完成。
+
+这个阶段不做工程设计，不拆文件，不写接口，不写测试代码。它只负责把方向锁住。
+
+### 4. 写工程实施计划
+
+接着使用 [`superpowers:writing-plans`](C:/Users/xinme/.codex/superpowers/skills/writing-plans/SKILL.md)。
+
+这一阶段根据 BDD 行为定向写工程实施计划。文件结构、模块边界、接口契约、状态设计、测试代码、命令和提交粒度都在这里处理。工程计划必须映射到前一步的 BDD Task，不能新增 BDD 没有授权的功能。
+
+### 5. 用主代理执行计划
+
+最后使用 [`main-agent-subagent-guardrails`](./main-agent-subagent-guardrails)。
+
+这一阶段让 GPT-5.5 主代理按已经确认的计划执行。主代理只做顾问、调度和验收，不自己下场改代码；子代理按 Task/step 边界执行；每个 Task 都要提交真实证据，缺证据、假数据、只做表面 UI、只做后端但用户路径走不通，都不能验收通过。
 
 ## 这个技能是做什么的
+
+### `bdd-before-planning`
+
+如果你准备让 AI 根据 UI 原型、设计文档或当前代码开始写工程实施计划，这个技能会先做一次 BDD 行为门禁。
+
+它不写工程设计，也不替代 `superpowers:writing-plans`。它只回答：
+
+- 当前 Task 要达成什么用户/玩家行为。
+- 哪些行为来自原型、设计文档、代码事实或用户明确要求。
+- 哪些只是保守推断，不能自动升级成必做。
+- 哪些是 AI 容易臆想的扩展功能，必须禁止进入第一版。
+- 每个 Task 需要什么真实验收证据，才能进入工程计划。
+
+用法上，它应该排在 `superpowers:writing-plans` 之前：
+
+```text
+UI 原型 / 设计文档 / 当前代码事实 / 用户目标
+-> bdd-before-planning
+-> superpowers:writing-plans
+-> 执行
+```
 
 ### `main-agent-subagent-guardrails`
 
@@ -21,9 +111,9 @@
 - 子代理要按统一规则提交证据、日志、阻塞项和返工结果。
 - 前端、真实浏览器验证、代码实现这些场景，都能挂上对应前置技能要求。
 
-## 什么时候适合用
+## 什么时候适合用 main-agent-subagent-guardrails
 
-如果你遇到下面这些情况，就适合用这个技能：
+如果你遇到下面这些情况，就适合使用 `main-agent-subagent-guardrails`：
 
 - 你已经有实施计划、规格或明确的 Task 边界，需要主代理按既定计划稳定派工。
 - 你希望 GPT-5.5 主代理只做顾问、调度、验收，不要自己写实现。
@@ -41,7 +131,7 @@
 - 统一的完成标准、证据要求、停止条件和阻塞上报方式。
 - 更稳定的大任务推进节奏：当前 Task 完成开发、集成、验收证据、双审和集中验收后，再进入下一个 Task。
 
-## 什么时候不建议用
+## 什么时候不建议用 main-agent-subagent-guardrails
 
 下面这些场景不建议引入这套约束：
 
@@ -123,6 +213,9 @@ GitHub 原技能地址：
 
 ## 想看具体规则
 
+- BDD 计划前行为定向：[`bdd-before-planning/SKILL.md`](./bdd-before-planning/SKILL.md)
+- BDD Task 模板：[`bdd-before-planning/references/task-bdd-template.md`](./bdd-before-planning/references/task-bdd-template.md)
+- BDD 到 writing-plans 交接约束：[`bdd-before-planning/references/writing-plans-handoff.md`](./bdd-before-planning/references/writing-plans-handoff.md)
 - 技能主规则：[`main-agent-subagent-guardrails/SKILL.md`](./main-agent-subagent-guardrails/SKILL.md)
 - 默认展示配置：[`main-agent-subagent-guardrails/agents/openai.yaml`](./main-agent-subagent-guardrails/agents/openai.yaml)
 - 子代理日志规范：[`main-agent-subagent-guardrails/references/subagent-log.md`](./main-agent-subagent-guardrails/references/subagent-log.md)

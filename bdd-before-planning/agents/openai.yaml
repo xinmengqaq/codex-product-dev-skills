@@ -1,0 +1,4 @@
+interface:
+  display_name: "BDD 计划前行为定向"
+  short_description: "在 writing-plans 前先根据 UI 原型、设计文档和代码事实锁定 Task 行为闭环、边界、验收证据和禁止臆想项。"
+  default_prompt: "使用 $bdd-before-planning：在调用 superpowers:writing-plans 写工程实施计划前，先根据当前用户目标、UI 原型、设计文档、规格和代码事实生成 BDD 行为定向。只负责锁定每个 Task 的用户/玩家行为闭环、明确依据、保守推断、禁止臆想、正常/失败/边界路径和真实验收证据；不要提前做文件结构、接口设计、测试代码、命令或实现步骤。输出可直接交给 superpowers:writing-plans 的约束，要求后续工程计划每个 Task 都映射到 BDD Task，不得新增 BDD 未授权的功能。"
